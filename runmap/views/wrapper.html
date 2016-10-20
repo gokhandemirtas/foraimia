@@ -1,0 +1,65 @@
+<div class="container content-logged school-run-map">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 translate="SHOOLRUNMAP_HEADLINE" class="headline"></h3>
+
+			<section class="map-wrapper">
+
+				<aside class="map-parent-overlay col-md-4 col-sm-8 col-xs-12" ng-show="viewState.isParentVisible">
+					<figure class="avatar">
+						<avatar source="{{parentDetails.avatar}}" width="80" height="80"></avatar>
+					</figure>
+					<div class="map-parent-details">
+						<p><strong>{{ parentDetails.firstName }} {{ parentDetails.lastName }} ({{parentDetails.relationship}})</strong></p>
+						<p><span translate="PUPILS_SEMICOL"></span> <span class="pupil" ng-repeat="p in parentDetails.pupils">{{ p.firstName }}</span></p>
+					</div>
+					<a class="close" ng-click="toggleParentOverlay()"><span class="dripicons-cross"></span></a>
+					<div class="buttons clearfix">
+						<a ui-sref="classlist.details({'id':parentDetails.id })">
+							<span class="icon dripicons-user"></span>
+							<span translate="PROFILE_BTN"></span>
+						</a>
+						<a ng-click="composeTo(parentDetails)">
+							<span class="icon dripicons-message"></span>
+							<span translate="MESSAGE_BTN"></span>
+						</a>
+					</div>
+					<div class="map-parent-details">
+						<div class="address">
+							<p ng-show="parentDetails.email.length > 0"><span class="icon dripicons-mail"></span> {{parentDetails.email}}</p>
+							<p ng-show="parentDetails.phoneNumber.length > 0"><span class="icon dripicons-phone"></span> {{parentDetails.phoneNumber}}</p>
+							<p ng-show="parentDetails.address.houseName.length > 0 ||
+													parentDetails.address.streetAddress.length > 0 ||
+													parentDetails.address.stateCounty.length > 0 ||
+													parentDetails.address.city.length > 0 ||
+													parentDetails.address.postCode.length > 0">
+								<span class="icon dripicons-location"></span>
+								<span class="address-line" ng-if="parentDetails.address.houseName">{{parentDetails.address.houseName}}</span>
+								<span class="address-line" ng-if="parentDetails.address.streetAddress">{{parentDetails.address.streetAddress}}<br/></span>
+								<span class="address-line" ng-if="parentDetails.address.stateCounty">{{parentDetails.address.stateCounty}}<br/></span>
+								<span class="address-line" ng-if="parentDetails.address.city">{{parentDetails.address.city}}<br/></span>
+								<span class="address-line" ng-if="parentDetails.address.postCode">{{parentDetails.address.postCode}}<br/></span>
+							</p>
+						</div>
+					</div>
+				</aside>
+
+				<runmap config="mapConfig"></runmap>
+
+			</section>
+			<div class="row hidden-sm hidden-xs jumbotron">
+				<div class="col-md-4">
+					<h3 translate="SCHOOLRUNMAP_GOGREEN"></h3>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-6">
+					<h4 translate="SCHOOLRUNMAP_SAVESTIME_H"></h4>
+					<p translate="SCHOOLRUNMAP_SAVESTIME_P"></p>
+					<h4 translate="SCHOOLRUNMAP_SAFE_H"></h4>
+					<p translate="SCHOOLRUNMAP_SAFE_P"></p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

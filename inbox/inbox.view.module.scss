@@ -1,0 +1,41 @@
+.conversation-message-list {
+	border-top:1px solid #d8d8d8;
+	padding-top:15px;
+	height: 300px;
+	overflow-y: auto;
+	@include transit(all .3s ease-out);
+	.conversation-message-item {
+		strong {
+			font-weight: 400;
+			cursor:pointer;
+		}
+		p {
+			margin:0;
+		}
+		time {
+			font-size:0.875em;
+			color:#838383;
+		}
+		padding:0 0 0 50px;
+		margin:0 0 20px 0;
+		position:relative;
+		.avatar {
+			left:0;
+			top:0;
+		}
+	}
+	.conversation-message-event {
+		p {
+			text-align: center;
+			color:#838383;
+			border-bottom:1px solid #d8d8d8;
+			font-size:0.875em;
+			height: 10px;
+			overflow: visible;
+			span {
+				background:$lite-gray-bg;
+				padding:0 10px;
+			}
+		}
+	}
+}

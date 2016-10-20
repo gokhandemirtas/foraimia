@@ -1,0 +1,13 @@
+<div class="container content-logged messages" get-height>
+	<ng-include src="'app/inbox/views/header.html'" class="hidden-xs"></ng-include>
+	<br class="visible-xs"/>
+	<div class="row">
+		<div class="col-md-4 col-sm-12 col-xs-12" id="leftpane">
+			<ng-include src="'app/inbox/views/header.html'" class="mobile visible-xs"></ng-include>
+			<conversations></conversations>
+		</div>
+		<div class="col-md-8 col-sm-12 col-xs-12 hidden-sm hidden-xs" id="rightpane">
+			<div ui-view autoscroll="false"></div>
+		</div>
+	</div>
+</div>

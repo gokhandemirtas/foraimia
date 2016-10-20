@@ -1,0 +1,13 @@
+<div class="cropper" ng-class="{'not-ready':!viewState.isReady}">
+	<img id="imgPreviewer"/>
+	<div class="cropper-pholder" id="imgPholder">
+		<input type="file" id="imgUploader"  accept="image/*" capture="camera"/>
+		<div class="cz-message">
+			<span class="icon dripicons-upload"></span>
+			<p translate="DRAG_A_PHOTO_HERE"></p>
+			<p translate="_OR_"></p>
+			<button type="button" class="btn btn-ghost" translate="CHOOSE_PHOTO"></button>
+			<p translate="MAX_FILE_SIZE"></p>
+		</div>
+	</div>
+</div>

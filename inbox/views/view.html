@@ -1,0 +1,59 @@
+<section class="message-compose" add-participants>
+	<div class="message-participants with-subject">
+		<figure class="avatar hidden-xs" ng-show="participants.length > 0" ng-click="showParticipants()">
+			<avatar source="{{ creator.avatar }}" width="40" height="40" ng-show="participants.length === 1"></avatar>
+			<span class="dripicons-conversation" ng-show="participants.length > 1"></span>
+		</figure>
+		<a class="back-button visible-xs" ui-sref="inbox"><span class="dripicons-arrow-thin-left"></span></a>
+		<div class="list clearfix">
+			<div class="pull-left">
+				<strong ng-click="showParticipants()">
+					<span translate="FROM_PERSON" translate-values="{firstName:creator.firstName, lastName:creator.lastName}"></span>
+					<span translate="TO_PERSON" translate-values="{firstName:participants[0].firstName, lastName:participants[0].lastName}" ng-show="participants.length === 1"></span>
+					<span translate="P_NUM" translate-values="{n:participants.length}" ng-show="participants.length > 1"></span>
+				</strong>
+				<p>{{conversation.subject }}</p>
+			</div>
+			<a class="pull-right add-participant" ng-click="openAddParticipantsModal()">
+				<span translate="ZERO_RECIPIENTS" ng-show="participants.length === 0"></span>
+				<span class="icon dripicons-plus"></span>
+			</a>
+		</div>
+	</div>
+	<div class="conversation-message-list" id="autoscroll">
+		<div ng-repeat="c in conversation.messages" class="conversation-message-item">
+			<div ng-if="!c.event">
+				<figure class="avatar">
+					<avatar source={{c.senderAvatar}} width="40" height="40" ui-sref="classlist.details({'id':c.senderId })"></avatar>
+				</figure>
+				<div class="message-content">
+					<strong ui-sref="classlist.details({'id':c.senderId })">{{::c.senderFirstName }} {{::c.senderLastName }}</strong>
+					<p>{{::c.body }}</p>
+					<time>{{::c.timestamp | date: 'h:mm a, MMM dd'}}</time>
+				</div>
+			</div>
+			<div ng-if="c.event" class="conversation-message-event">
+				<p>
+					<span ng-if="c.event === 'left'" translate="MSG_EVENT_LEFT" translate-values="{'firstName':c.senderFirstName, 'lastName':c.senderLastName}"></span>
+					<span ng-if="c.event === 'joined'" translate="MSG_EVENT_JOIN" translate-values="{'firstName':c.senderFirstName, 'lastName':c.senderLastName}"></span>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<aside class="composer">
+		<form novalidate name="sm" ng-class="{'not-ready':!viewState.isReady}">
+			<div class="form-group clearfix is-relative">
+				<textarea class="form-control message-body" ng-model="body" placeholder="{{ 'MESSAGE_BODY_PHOLDER' | translate}}"
+					ng-minlength="regexes.min.msgBody" ng-maxlength="regexes.max.msgBody"
+					maxlength="{{regexes.max.msgBody}}" required noresize></textarea>
+				<small class="counter" ng-class="{'error-color':body.length >= regexes.max.msgBody }">{{ body.length }}/{{regexes.max.msgBody}}</small>
+			</div>
+			<div class="clearfix">
+				<button type="button" class="btn btn-primary pull-right" ng-click="send()" ng-disabled="sm.$invalid">
+					<span translate="REPLY_BTN"></span>
+				</button>
+			</div>
+		</form>
+	</aside>
+</section>

@@ -1,0 +1,28 @@
+.message-compose {
+	min-height: 300px;
+	height: 500px;
+	@include transit(all .3s ease-out);
+	display:block;
+	position:relative;
+}
+.composer {
+	.counter {
+		position:absolute;
+		top:-15px;
+		right:0;
+	}
+	width: 100%;
+	display:block;
+
+	textarea {
+		width: 100%;
+	}
+	position: absolute;
+	bottom:0;
+}
+textarea.message-body {
+	background:$lite-gray-bg;
+	padding:10px;
+	min-height: 80px;
+	border:1px solid #9b9b9b!important;
+}

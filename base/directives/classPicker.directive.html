@@ -1,0 +1,14 @@
+<div class="is-relative">
+	<button type="button" class="btn btn-block class-picker-button" ng-click="showTiers = !showTiers" ng-class="{'selected':tier.id}">
+		<span translate="PUPIL_CLASS_PHOLDER" ng-hide="tier.id"></span>
+		<span ng-show="tier.id">
+			<span ng-if="tier.translation">{{ tier.translation | translate }}</span>
+			<span ng-if="!tier.translation">{{ tier.name }}</span>
+		</span>
+		<span class="dripicons-chevron-down select-arrow"></span>
+	</button>
+	<nav id="class-picker" ng-class="{'show':showTiers}">
+		<ul id="tier-1"></ul>
+		<div class="fader"><span translate="SCROLL_DOWN_MORE"></span></div>
+	</nav>
+</div>

@@ -1,0 +1,17 @@
+<div class="messages show-participants" add-participants>
+	<ul class="basket">
+		<li ng-repeat="p in participants track by $index">
+			<div class="participant">
+				<figure class="avatar">
+					<avatar source="{{p.avatar}}" width="40" height="40"></avatar>
+				</figure>
+				{{p.firstName}} {{p.lastName}}
+			</div>
+		</li>
+	</ul>
+	<a class="add-participant" ng-click="close(); openAddParticipantsModal()">
+		<span class="dripicons-plus"></span>
+		<span translate="ADD_RECIPIENT_BTN" ng-if="!eventContext"></span>
+		<span translate="ADD_GUESTS_BTN" ng-if="eventContext"></span>
+	</a>
+</div>

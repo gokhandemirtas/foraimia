@@ -1,0 +1,107 @@
+.school-run-map {
+	.headline {
+		font-size:1em;
+		font-weight: 400;
+		padding:10px 0 15px 0;
+	}
+}
+
+.map-wrapper {
+	position:relative
+}
+
+.map-parent-overlay {
+	a.close {
+		text-decoration:none;
+		position:absolute;
+		font-size:1.5em;
+		color:#9b9b9b;
+		right:10px;
+		top:10px;
+		z-index:3;
+	}
+	.address {
+		p {
+			position:relative;
+			margin:0 0 15px 0;
+			padding:0 0 0 30px;
+			.icon {
+				color:#9b9b9b;
+				position:absolute;
+				left:0;
+				top:0
+			}
+		}
+	}
+	min-height: 478px;
+	min-width: 240px;
+	background:rgba(255,255,255,0.9);
+	position:absolute;
+	left:1px;
+	top:1px;
+	border-right:1px solid #9b9b9b;
+	z-index:2;
+	.avatar {
+		margin:10px 0 0 10px;
+		width:80px;
+		height:80px;
+		overflow:hidden;
+		padding: 0;
+		background: #ffb74d;
+		font-size: 2em;
+		color: #fff;
+		text-align: center;
+		@include rounded(300px)
+	}
+	.map-parent-details {
+		display:block;
+		padding:10px;
+		color:#000;
+		.pupil {
+			margin:0 2px 0 0;
+			&:after {
+				content:','
+			}
+			&:last-child {
+				&:after {
+					content:''
+				}
+			}
+		}
+	}
+	.buttons {
+		margin:0 -15px 5px -15px;
+		padding:10px 20px;
+		border-top: 1px solid #d8d8d8;
+		border-bottom: 1px solid #d8d8d8;
+		a {
+			float:left;
+			margin:0 20px 0 0;
+			font-size:1em;
+			text-align: center;
+			text-decoration: none;
+			.icon {
+				font-size:1.5em;
+				display:block;
+			}
+		}
+	}
+}
+
+
+.jumbotron {
+	padding:50px 0 0 0;
+	h3 {
+		margin:0;
+		font-size:1.75em;
+		font-weight: 400;
+	}
+	h4 {
+		margin:0 0 15px 0;
+		font-size:1.75em;
+		font-weight: 400;
+	}
+	p {
+		margin: 0 0 30px 0;
+	}
+}

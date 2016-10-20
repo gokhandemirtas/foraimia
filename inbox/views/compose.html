@@ -1,0 +1,43 @@
+<section class="message-compose" add-participants>
+	<div class="message-participants">
+		<strong translate="NEW_MESSAGE_LBL" class="new-message" ng-show="participants.length === 0"></strong>
+		<figure class="avatar hidden-xs" ng-show="participants.length > 0">
+			<avatar source="{{participants[0].avatar}}" width="40" height="40" ng-show="participants.length === 1"></avatar>
+			<span class="dripicons-conversation" ng-show="participants.length > 1"></span>
+		</figure>
+		<a class="back-button visible-xs" ui-sref="inbox"><span class="dripicons-arrow-thin-left"></span></a>
+		<div class="list clearfix">
+			<strong class="pull-left">
+				{{participants[0].firstName}} {{participants[0].lastName}}
+				<span translate="P_NUM" translate-values="{n:participants.length-1}" ng-show="participants.length > 1"></span>
+			</strong>
+			<a class="pull-right add-participant" ng-click="openAddParticipantsModal()">
+				<span translate="ZERO_RECIPIENTS" ng-show="participants.length === 0"></span>
+				<span class="icon dripicons-plus"></span>
+			</a>
+		</div>
+	</div>
+	<form novalidate name="sm" ng-class="{'not-ready':!viewState.isReady}">
+		<div class="form-group">
+			<input type="text" class="form-control" ng-model="message.subject" placeholder="{{ 'MESSAGE_SUBJECT_PHOLDER' | translate }}"
+			 ng-minlength="regexes.min.msgSubject" ng-maxlength="regexes.max.msgSubject"
+			 maxlength="{{regexes.max.msgSubject}}" required/>
+		</div>
+		<aside class="composer">
+			<div class="form-group clearfix is-relative">
+				<textarea class="form-control message-body" ng-model="message.body" placeholder="{{ 'MESSAGE_BODY_PHOLDER' | translate}}"
+					ng-minlength="regexes.min.msgBody" ng-maxlength="regexes.max.msgBody"
+					maxlength="{{regexes.max.msgBody}}" required noresize></textarea>
+				<small class="counter" ng-class="{'error-color':message.body.length >= regexes.max.msgBody }">{{ message.body.length }}/{{regexes.max.msgBody}}</small>
+			</div>
+			<div class="clearfix">
+				<button type="button" class="btn btn-ghost pull-left" ui-sref="inbox.compose" ui-sref-opts="{reload: true, notify: true, inherit:false}" style="text-transform: uppercase">
+					<span translate="CANCEL_BTN"></span>
+				</button>
+				<button type="button" class="btn btn-primary pull-right" ng-click="send()" ng-disabled="sm.$invalid || participants.length === 0">
+					<span translate="SEND_BTN"></span>
+				</button>
+			</div>
+		</aside>
+	</form>
+</section>

@@ -1,0 +1,17 @@
+<div class="photo-uploader">
+	<div class="modal-header">
+		<h3 class="modal-title" translate="UPLOAD_PHOTO_TITLE"></h3>
+	</div>
+	<div class="modal-body">
+		<cropper events="events"></cropper>
+		<a class="rotate-button" ng-class="{'visible':saveDisabled === false}" ng-click="rotate()"><span class="dripicons-clockwise"></span></a>
+	</div>
+	<div class="modal-helper">
+		<a ng-class="{'visible':saveDisabled === false}" translate="CHOOSE_DIFFERENT_PHOTO" ng-click="chooseAgain()"></a>
+		<p translate="PHOTO_UPLOAD_HELPER" ng-hide="saveDisabled === false"></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" type="button" ng-click="close()"><span translate="CANCEL_BTN"></span></button>
+		<button class="btn btn-primary" type="button" ng-click="save()" ng-disabled="saveDisabled"><span translate="SAVE_BTN"></span></button>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<script type="text/ng-template" id="participantTemplate.html">
+	<a>
+		<span ng-bind-html="match.model.field1 | uibTypeaheadHighlight:query" ng-if="match.model.field1"></span>
+		<span ng-bind-html="match.model.field2 | uibTypeaheadHighlight:query" ng-if="match.model.field2"></span>
+	</a>
+</script>
+<div class="manage-participants">
+	<div class="search">
+		<input type="text" ng-model="participant" placeholder="{{ 'ADD_RECIPIENT_SEARCH_PHOLDER' | translate }}"
+					 uib-typeahead="r.field1 for r in getParticipants($viewValue)"
+					 typeahead-wait-ms="300" typeahead-min-length="3"
+					 typeahead-on-select="pickParticipant($item)"
+					 typeahead-template-url="participantTemplate.html"
+					 class="form-control"/>
+	</div>
+	<ul class="basket">
+		<li ng-repeat="(key, item) in participants track by $index">
+			<header class="tier-header" ng-if="item.type !== 'user' && item.tierId !== participants[key-1].tierId">
+				<figure class="avatar"><span class="dripicons-user-id"></span></figure>
+				{{ item.tierName }}
+				<a ng-click="toggleGroup(item.tierId)"><span class="dripicons-chevron-down"></span></a>
+			</header>
+			<div ng-class="{'group':item.type !== 'user'}" class="{{ item.tierId }}">
+				<div class="participant">
+					<figure class="avatar">
+						<avatar source="{{item.avatar}}" width="40" height="40"></avatar>
+					</figure>
+					{{item.firstName}} {{item.lastName}}
+					<a ng-click="removeParticipant(item)" ng-show="participants.length > 1"><span class="dripicons-cross"></span></a>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

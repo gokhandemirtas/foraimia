@@ -1,0 +1,84 @@
+.manage-participants, .show-participants  {
+	p {
+		margin:0 10px 20px 10px;
+	}
+	.search {
+		display:block;
+		margin:0 0 20px 0;
+	}
+	.dropdown-menu {
+		float:none;
+		display:block;
+		max-width:100%;
+		min-width: 93%;
+	}
+	.basket {
+		list-style:none;
+		margin:0;
+		padding:0;
+		max-height: 275px;
+		overflow-y: scroll;
+		li {
+			.avatar {
+				position:absolute;
+				left:10px;
+				top:5px;
+				padding: 0;
+				width: 40px;
+				height: 40px;
+				overflow:hidden;
+				line-height: 45px;
+				text-align:center;
+				font-size:1.5em;
+				@include rounded(100px);
+				img {
+					vertical-align:top;
+				}
+			}
+
+			a {
+				text-decoration:none;
+				position:absolute;
+				font-size:1.5em;
+				top:3px;
+				right:10px;
+				color:$brand-red-orange;
+			}
+			.tier-header {
+				display:block;
+				height: 50px;
+				line-height: 50px;
+				background:#ebebeb;
+				padding:0 10px 0 60px;
+				position:relative;
+				.avatar {
+					color:#fff;
+					background:$brand-red-orange;
+				}
+			}
+			.participant {
+				@include transit(all .3s ease);
+				display:block;
+				padding:0 10px 0 60px;
+				position:relative;
+				color:#000;
+				height: 50px;
+				line-height: 50px;
+				&:hover {
+					background:$brand-yellow;
+				}
+				overflow:hidden;
+			}
+			.group {
+				.participant {
+					display:none;
+				}
+				&.visible {
+					.participant {
+						display:block;
+					}
+				}
+			}
+		}
+	}
+}
